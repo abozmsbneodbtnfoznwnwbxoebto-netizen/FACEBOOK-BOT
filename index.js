@@ -1,10 +1,9 @@
 const login = require("sahu-fca");
-const fs = require("fs");
 const http = require("http");
 
-const appState = JSON.parse(fs.readFileSync("appstate.json", "utf8"));
+const appState = JSON.parse(process.env.APPSTATE);
 
-http.createServer((req, res) => res.end("Bot is alive")).listen(process.env.PORT || 3000);
+http.createServer((req, res) => res.end("ok")).listen(process.env.PORT || 3000);
 
 login({ appState }, (err, api) => {
   if (err) return console.error(err);
